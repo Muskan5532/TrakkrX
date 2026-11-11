@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Deadline Tracker</h2>
+
+<p>Keep track of your assignments and upcoming deadlines.</p>
+
+<hr>
+
+<h3>Overdue Tasks</h3>
+
+{% if overdue_tasks %}
+
+    {% for task in overdue_tasks %}
+
+        <div>
+            <h4>{{ task.title }}</h4>
+            <p>Subject: {{ task.subject }}</p>
+            <p>Deadline: {{ task.deadline }}</p>
+            <p>Status: OVERDUE</p>
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No overdue tasks. Great work!</p>
+
+{% endif %}
+
+<hr>
+
+<h3>Upcoming Deadlines</h3>
+
+{% if upcoming_deadlines %}
+
+    {% for task in upcoming_deadlines %}
+
+        <div>
+            <h4>{{ task.title }}</h4>
+            <p>Subject: {{ task.subject }}</p>
+            <p>Deadline: {{ task.deadline }}</p>
+            <p>Status: PENDING</p>
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No upcoming deadlines.</p>
+
+{% endif %}
+
+<hr>
+
+<h3>Completed Tasks</h3>
+
+{% if completed_deadlines %}
+
+    {% for task in completed_deadlines %}
+
+        <div>
+            <h4>{{ task.title }}</h4>
+            <p>Subject: {{ task.subject }}</p>
+            <p>Deadline: {{ task.deadline or "Not specified" }}</p>
+            <p>Status: COMPLETED</p>
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No completed tasks yet.</p>
+
+{% endif %}
+
+{% endblock %}

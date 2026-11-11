@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TrakkrX - Study Planner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block extra_head %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <header>
+        <h1>TrakkrX</h1>
+        <p>Your personal study planner</p>
+
+        <nav>
+            <a href="/">Dashboard</a> |
+            <a href="/tasks">Tasks</a> |
+            <a href="/subjects">Subjects</a> |
+            <a href="/deadlines">Deadlines</a> |
+            <a href="/timer">Study Timer</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>

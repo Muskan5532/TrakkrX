@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Manage Your Tasks</h2>
+
+<h3>Add a New Task</h3>
+
+<form method="POST" action="/tasks">
+
+    <label>Task Title:</label>
+    <input type="text" name="title" required>
+
+    <br><br>
+
+    <label>Select Subject:</label>
+
+<select name="subject" required>
+    <option value="">Choose a subject</option>
+
+    {% for subject in subjects %}
+        <option value="{{ subject.name }}">
+            {{ subject.name }}
+        </option>
+    {% endfor %}
+
+    <option value="Other">Other</option>
+</select>
+
+<br><br>
+
+<label>New Subject Name (if Other is selected):</label>
+
+<input
+    type="text"
+    name="new_subject"
+    placeholder="Enter new subject name"
+>
+
+    <br><br>
+
+    <label>Description:</label>
+    <textarea name="description"></textarea>
+
+    <br><br>
+
+    <label>Deadline:</label>
+    <input type="date" name="deadline">
+
+    <br><br>
+
+    <button type="submit">Add Task</button>
+
+</form>
+
+<hr>
+
+<h3>Your Tasks</h3>
+
+{% if tasks %}
+
+    {% for task in tasks %}
+
+        <div>
+
+            <h4>{{ task.title }}</h4>
+
+            <p>Subject: {{ task.subject }}</p>
+            <p>Description: {{ task.description }}</p>
+            <p>Deadline: {{ task.deadline }}</p>
+
+            {% if task.completion_status %}
+
+                <p>Status: COMPLETED</p>
+
+            {% else %}
+
+                <p>Status: PENDING</p>
+
+                <form method="POST"
+                      action="{{ url_for('complete_task', task_index=loop.index0) }}">
+
+                    <button type="submit">Mark Complete</button>
+
+                </form>
+
+            {% endif %}
+
+            <form method="POST"
+                  action="{{ url_for('delete_task', task_index=loop.index0) }}">
+
+                <button type="submit">Delete Task</button>
+
+            </form>
+
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No tasks added yet.</p>
+
+{% endif %}
+
+{% endblock %}

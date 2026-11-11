@@ -1,0 +1,63 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Manage Your Subjects</h2>
+
+<h3>Add a New Subject</h3>
+
+<form method="POST" action="/subjects">
+
+    <label>Subject Name:</label>
+    <input type="text" name="name" required>
+
+    <br><br>
+
+    <label>Description:</label>
+    <textarea name="description"></textarea>
+
+    <br><br>
+
+    <button type="submit">Add Subject</button>
+
+</form>
+
+<hr>
+
+<h3>Your Subjects</h3>
+
+{% if subjects %}
+
+    {% for subject in subjects %}
+
+        <div>
+
+            <h4>{{ subject.name }}</h4>
+
+            <p>{{ subject.description }}</p>
+
+            <a href="{{ url_for('edit_subject', subject_index=loop.index0) }}">
+                <button type="button">Edit Subject</button>
+            </a>
+
+            <form method="POST"
+                  action="{{ url_for('delete_subject', subject_index=loop.index0) }}">
+
+                <button type="submit">Delete Subject</button>
+
+            </form>
+
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No subjects added yet.</p>
+
+{% endif %}
+
+{% endblock %}

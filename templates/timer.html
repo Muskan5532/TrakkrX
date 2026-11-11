@@ -1,0 +1,130 @@
+
+{% extends "base.html" %}
+
+{% block extra_head %}
+
+    {% if timer_state.status == "running" %}
+        <meta http-equiv="refresh" content="1">
+    {% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h2>Study Timer</h2>
+
+<p>Stay focused and make your study time count.</p>
+
+<hr>
+
+<h3>Choose Your Study Session</h3>
+
+<form method="POST" action="/timer">
+
+    <label>Duration (minutes):</label>
+
+    <input
+        type="number"
+        name="minutes"
+        value="25"
+        min="1"
+        max="180"
+        required
+        {% if timer_state.status == "running"
+        or timer_state.status == "paused" %}
+        disabled
+        {% endif %}
+    >
+
+    <br><br>
+
+    <label>Select Subject:</label>
+
+    <select
+        name="subject"
+        {% if timer_state.status == "running"
+        or timer_state.status == "paused" %}
+        disabled
+        {% endif %}
+    >
+
+        <option value="">General Study</option>
+
+        {% for subject in subjects %}
+
+            <option value="{{ subject.name }}">
+                {{ subject.name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <button
+        type="submit"
+        name="action"
+        value="start"
+        {% if timer_state.status == "running"
+        or timer_state.status == "paused" %}
+        disabled
+        {% endif %}
+    >
+        Start Timer
+    </button>
+
+</form>
+
+<hr>
+
+<h3>Time Remaining</h3>
+
+<h1 class="timer-display">{{ time_display }}</h1>
+
+<p>Subject: {{ timer_state.subject or "General Study" }}</p>
+
+<p>Status: {{ timer_state.status | upper }}</p>
+
+
+{% if timer_state.status == "running" %}
+
+    <form method="POST" action="/timer">
+
+        <button type="submit" name="action" value="pause">
+            Pause
+        </button>
+
+    </form>
+
+{% elif timer_state.status == "paused" %}
+
+    <form method="POST" action="/timer">
+
+        <button type="submit" name="action" value="resume">
+            Resume
+        </button>
+
+    </form>
+
+{% elif timer_state.status == "finished" %}
+
+    <p>Your study session is complete!</p>
+
+{% endif %}
+
+
+{% if timer_state.status == "paused" %}
+
+    <form method="POST" action="/timer">
+
+        <button type="submit" name="action" value="reset">
+            Reset Timer
+        </button>
+
+    </form>
+
+{% endif %}
+
+{% endblock %}

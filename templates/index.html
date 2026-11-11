@@ -1,0 +1,75 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<p>Welcome to your trakkrX study dashboard!</p>
+
+<hr>
+
+<h3>Task Overview</h3>
+
+<div>
+    <h4>Total Tasks</h4>
+    <p>{{ total_tasks }}</p>
+</div>
+
+<div>
+    <h4>Completed Tasks</h4>
+    <p>{{ completed_tasks }}</p>
+</div>
+
+<div>
+    <h4>Pending Tasks</h4>
+    <p>{{ pending_tasks }}</p>
+</div>
+
+<hr>
+
+<h3>Overall Study Progress</h3>
+
+<p>{{ progress }}% completed</p>
+
+<div style="width: 100%; background-color: #dddddd; height: 20px;">
+
+    <div style="
+        width: {{ progress }}%;
+        background-color: #4CAF50;
+        height: 20px;
+    "></div>
+
+</div>
+
+<hr>
+
+<h3>Closest Upcoming Deadlines</h3>
+
+{% if closest_tasks %}
+
+    {% for task in closest_tasks %}
+
+        <div>
+            <h4>{{ task.title }}</h4>
+            <p>Subject: {{ task.subject }}</p>
+            <p>Deadline: {{ task.deadline }}</p>
+            <p>Status: PENDING</p>
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No upcoming deadlines. You're all caught up!</p>
+
+{% endif %}
+
+<hr>
+
+<p><a href="/tasks">Manage Tasks</a></p>
+<p><a href="/subjects">Manage Subjects</a></p>
+
+{% endblock %}

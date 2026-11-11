@@ -1,0 +1,30 @@
+[
+    {
+        "title": "mini project",
+        "subject": "CP",
+        "description": "computer programming",
+        "deadline": "2026-11-12",
+        "completion_status": true
+    },
+    {
+        "title": "read notes",
+        "subject": "ECE",
+        "description": "basics of electronics and communication engineering",
+        "deadline": "2026-11-14",
+        "completion_status": true
+    },
+    {
+        "title": "write notes",
+        "subject": "FEE",
+        "description": "xcv",
+        "deadline": "2026-11-10",
+        "completion_status": false
+    },
+    {
+        "title": "viva preparation",
+        "subject": "ECE",
+        "description": "lab viva",
+        "deadline": "2026-11-20",
+        "completion_status": false
+    }
+]

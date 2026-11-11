@@ -1,0 +1,240 @@
+
+/* GENERAL PAGE STYLING */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f4f8;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+
+/* HEADER */
+
+header {
+    background-color: #263568;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+/* NAVIGATION BAR */
+
+nav {
+    background-color: #394987;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #cbd8ff;
+}
+
+
+/* MAIN CONTENT AREA */
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* HEADINGS AND TEXT */
+
+h1, h2, h3 {
+    color: #263568;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/*TRAKKRX HEADING COLOUR*/
+header h1 {
+    color: white;
+}
+
+/* CARDS AND SECTIONS */
+
+.card, section {
+    background-color: #f8f9fc;
+    padding: 20px;
+    margin: 15px 0;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+
+/* HORIZONTAL SEPARATORS */
+
+hr {
+    border: none;
+    border-top: 1px solid #e5e9f2;
+    margin: 25px 0;
+}
+
+
+/* LINKS */
+
+a {
+    color: #394987;
+}
+
+a:hover {
+    color: #263568;
+}
+
+
+
+/* BUTTONS */
+
+button {
+    background-color: #394987;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 3px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #263568;
+}
+
+button:disabled {
+    background-color: #999999;
+    cursor: not-allowed;
+}
+
+
+/* INPUT FIELDS AND FORMS */
+
+input, select, textarea {
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    max-width: 500px;
+    width: 100%;
+    font-size: 15px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #394987;
+}
+
+
+/* TABLES */
+
+table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+th {
+    background-color: #394987;
+    color: white;
+}
+
+
+
+/* STUDY TIMER */
+
+.timer-display {
+    font-size: 64px;
+    font-weight: bold;
+    text-align: center;
+    color: #263568;
+    margin: 25px 0;
+}
+
+
+
+/* FOOTER */
+
+footer {
+    background-color: #263568;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 650px) {
+
+    main {
+        margin: 15px;
+        padding: 18px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 6px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .timer-display {
+        font-size: 48px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+}
